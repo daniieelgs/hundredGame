@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/tableRanking.css">
+    <title>1...100</title>
+</head>
+<body>
+    
+    <div id="modal" class="modalType modalBg">
+
+        <div class="modalAlert showAlert">
+            <nav><ul><li class="jugar select">Jugar</li><li class="ranking">Ranking</li></ul></nav>
+            <hr/>
+                <div class="contentAlert jugarAlert">
+                    <input type="text" list="userList" id="userSelected" autocomplete="off"/>
+                        <datalist id="userList"></datalist>
+                        <p class="invalidError"></p>
+                        <button class="btnAction btnSelectUser">Jugar</button>
+                </div>
+
+                <div class="contentAlert rankingAlert hideAlert"></div>
+        </div>
+
+    </div>
+
+    
+    <div id="labelGameEnd" class="modalType">
+
+        <h1 class="label"></h1>
+
+    </div>
+
+    <div id="modalPause" class="modalType">
+
+        <button class="btnAction btnPlay hide">Play</button>
+
+    </div>
+
+    <header>
+        <h1>&LT;1...100&sol;&GT;</h1>
+    </header>
+
+    <div class="gameContainer">
+
+        <div class="infoContainer">
+            <div class="scoreTab">
+                <div class="scoreItem">
+                    <p class="scoreText">Puntuación:</p>
+                    <p><span id="score"></span> pts</p>
+                </div>
+                <div class="scoreItem">
+                    <p class="timerText">Tiempo:</p>
+                    <p><span id="timer"></span>s</p>
+                </div>
+                <div class="scoreItem">
+                    <p class="userText">Jugador:</p>
+                    <p><span id="user"></span></p>
+                </div>
+                <div class="scoreItem">
+                    <p class="recordText">Record:</p>
+                    <p><span id="record"></span></p>
+                </div>
+                <button  class="btnAction btnReset">Reset</button>
+                <button  class="btnAction btnPause">Pause</button>
+                <button  class="btnAction btnHelp" data-timer="30">Help</button>
+            </div>
+            <div class="gameTab">
+                <h3 class="gameEnd"></h3>
+            </div>
+        </div>
+        
+        <div id="game"></div>
+
+    </div>
+
+    <script src="js/worker.js"></script>
+    <script src="js/sw.js"></script>
+
+    <script src="js/api.js"></script>
+    <script src="js/indexedDB.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/rankings.js"></script>
+    <script src="js/service_worker.js"></script>
+
+</body>
+</html>

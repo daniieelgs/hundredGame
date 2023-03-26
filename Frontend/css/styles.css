@@ -1,0 +1,403 @@
+:root{
+    --main-color: rgb(255, 166, 0);
+    --color-correct: rgb(0, 173, 0);
+    --color-bad: rgb(230, 0, 0);
+    --color-help: rgb(0, 127, 127);
+    --color-btnNumber: #fff;
+}
+
+h1, h2{
+    margin: 0;
+}
+
+body{
+    background-color: var(--main-color);
+}
+
+body.modal{
+    overflow: hidden;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 20vh;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;   
+    font-size: .9rem;
+}
+
+header > h1{
+    text-align: center;
+}
+
+.gameContainer{
+
+    display: flex;
+
+    flex-direction: column;
+
+    width: 100%;
+    height: max-content;
+
+    justify-content: center;
+    align-items: center;
+
+}
+
+.gameContainer .infoContainer{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+
+.gameContainer .scoreTab{
+    display: flex;
+
+    gap: 10px;
+
+    width: max-content;
+
+    align-items: center;
+    
+}
+
+.gameContainer .gameTab{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.gameTab .gameEnd{
+    font-size: 1.8rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.gameEnd.gameOver{
+    color: var(--color-bad);
+    animation: animationGameOverText 1s infinite alternate;
+}
+
+.label.gameOver{
+    color: rgb(101, 0, 0);
+}
+
+.label.gameWin{
+    color: rgb(0, 74, 0);
+}
+
+.gameEnd.gameWin{
+    color: var(--color-correct);
+}
+
+.label.animatedLabel{
+    font-size: 8rem;
+    animation: animationGameOverText 2s 2 alternate;
+}
+
+.btnAction{
+    height: max-content;
+    background-color: rgb(0, 119, 255);
+    border: 0;
+    outline: 0;
+    padding: 5px 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #fff;
+    font-size: 1.1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 0 25px;
+}
+
+.btnAction:hover{
+    background-color: rgb(0, 86, 184);
+}
+
+.btnAction:active{
+    background-color: rgb(121, 0, 132);
+}
+
+.btnReset{
+    background-color: var(--color-bad);
+}
+
+.btnPause{
+    background-color: var(--color-correct);
+}
+
+.btnPause:hover{
+    background-color: rgb(0, 94, 0);
+}
+
+.btnPlay{
+    font-size: 7rem;
+    padding: 25px 50px;
+    border-radius: 30px;
+    position: absolute;
+    z-index: 200;
+    transition: all .5s;
+    right: 50%;
+}
+
+.btnPlay.hide{
+    transform: translateX(1100%);
+}
+
+.btnPlay.enter{
+
+    transform: translateX(50%);
+
+}
+
+.btnPlay.exit{
+
+    transform: translateX(-510%);
+
+}
+
+.btnHelp{
+    background-color: var(--color-help);
+    width: 60px;
+}
+
+.btnHelp.helpTimer{
+    background-color: rgb(132, 132, 132);
+}
+
+.btnReset:hover{
+    background-color: rgb(148, 0, 0);
+}
+
+.btnReset:active{
+    background-color: rgb(128, 0, 128);
+}
+
+.gameContainer .scoreTab .scoreItem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 10px
+}
+
+.gameContainer .scoreTab .scoreItem p:last-of-type{
+    font-weight: 500;
+    font-size: 1.4rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: #fff;
+}
+
+.scoreItem p{
+    margin: 0;
+    padding: 0;
+}
+
+#game{
+
+    width: 80%;
+    height: max-content;
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(min-content, 100px));
+    grid-template-rows: repeat(auto-fill, max-content);
+
+    gap: 10px;
+
+    border: 1px solid rgb(0, 128, 0);
+    border-radius: 15px;
+    padding: 30px;
+
+}
+
+.btnNumber{
+
+    display: inline-block;
+    background-color: var(--color-btnNumber);
+
+    text-align: center;
+    font-size: 1.3rem;
+    line-height: 2.6rem;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    color:#000;
+    font-weight: 100;
+
+    transition: all .2s;
+}
+
+.btnNumber.help{
+    animation: helpAnimation 1.5s cubic-bezier(0.55, 0.06, 0.68, 0.19);
+}
+
+.btnNumber::before{
+    content: attr(data-number);
+}
+
+.btnNumber.paused::before{
+    content: 'paused';
+}
+
+.btnNumber:hover, .btnNumber.clicked{
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+.btnNumber.clickedCorrect{
+
+    background-color: var(--color-correct);
+    color: var(--main-color);
+    font-weight: 600;
+
+}
+
+.btnNumber.clickedBad{
+
+    background-color: var(--color-bad);
+    color: var(--main-color);
+    font-weight: 600;
+
+}
+
+.btnNumber.clickedBad.animatedClick{
+    animation: animationClickedBad .5s 2;
+}
+
+.btnNumber.clickedCorrect.animatedClick{
+    animation: animationClickedCorrect .8s 2;
+}
+
+#timer.shortTime{
+    animation: shortTimerAnimated 1s infinite;
+}
+
+#user{
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: #000;
+    cursor: pointer;
+}
+
+#user:hover{
+    color: rgb(0, 128, 255);
+}
+
+@keyframes animationGameOverText {
+    
+    50%{
+        opacity: 1;
+    }
+
+    to{
+        opacity: 0;
+    }
+
+}
+
+@keyframes animationGameOverText {
+    
+    0%{
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
+
+}
+
+@keyframes helpAnimation {
+    
+    from{
+        background-color: rgb(0, 181, 181);
+    }
+
+    to{
+        background-color: var(--color-btnNumber);
+    }
+
+}
+
+@keyframes animationClickedBad {
+
+    50%{
+        background-color: var(--color-bad);
+    }
+
+    to{
+        background-color: var(--color-btnNumber);
+    }
+
+}
+
+@keyframes animationClickedCorrect {
+
+    50%{
+        background-color: var(--color-correct);
+    }
+
+    to{
+        background-color: var(--color-btnNumber);
+    }
+
+}
+
+@keyframes shortTimerAnimated {
+    
+    50%{
+        color: #fff;
+    }
+
+    to{
+        color: var(--color-bad);
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    
+    .gameContainer .infoContainer{
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .gameContainer .scoreTab{
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    #game{
+        padding: 10px;
+        width: 95%;
+        justify-content: space-around;
+    }
+
+    #modal .modalAlert{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 900px) and (orientation: landscape) {
+    #game{
+        padding: 10px;
+        width: 95%;
+        justify-content: space-around;
+    }
+
+    #modal .modalAlert{
+        width: 100%;
+    }
+
+    .gameContainer .infoContainer{
+        width: 100%;
+    }
+}

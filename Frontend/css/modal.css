@@ -1,0 +1,110 @@
+.modalType{
+    display: none;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.modalType.modalBg{
+    background-color: rgba(188, 188, 188, 0.578);
+}
+
+.modalType.showModal{
+    display: flex;
+}
+
+.modalAlert{
+
+    display: none;
+
+    width: 50%;
+
+    background-color: #fff;
+    border-radius: 40px;
+
+    overflow: hidden;
+
+    padding-bottom: 40px;
+
+}
+
+.modalAlert .title{
+    text-align: center;
+    margin: 10px;
+    font-size: 1.5rem;
+}
+
+.modalAlert .contentAlert{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: calc(100vh - 1.7rem - 100px);
+    overflow-y: scroll;
+}
+
+.modalAlert .contentAlert.jugarAlert{
+    overflow-y: hidden;
+}
+
+.btnSelectUser{
+    font-size: 1.2rem;
+    padding: 10px 50px;
+}
+
+.modalAlert input{
+
+    width: max-content;
+    font-size: 20px;
+    padding: 5px;
+    border: 2px solid gray;
+    background-color: rgb(217, 217, 217);
+    border-radius: 5px;
+    color: var(--main-color);
+}
+
+.modalAlert p.invalidError{
+    color: var(--color-bad);
+}
+
+.modalAlert.showAlert{
+    display: block;
+}
+
+.modalAlert > nav > ul{
+
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(175, 175, 175);
+}
+
+.modalAlert > nav > ul > li{
+    list-style: none;
+    font-size: 1.7rem;
+    margin: 0;
+    margin-top: 5px;
+    padding: 10px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    color: rgb(45, 115, 230);
+    cursor: pointer;
+}
+
+.modalAlert > nav > ul > li.select{
+    background-color: #fff;
+    color: rgb(54, 169, 63);
+}
+
+.contentAlert.hideAlert{
+    display: none;
+}
